@@ -8,16 +8,13 @@ X, y = data.data, data.target
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
 
-print(X_train)
-print(X_train.shape)
 
+clf = DecisionTree()
+clf.fit(X_train, y_train)
+predictions = clf.predict(X_test)
 
-# clf = DecisionTree()
-# clf.fit(X_train, y_train)
-# predictions = clf.predict(X_test)
-#
-# def accuracy(y_true, y_pred):
-#     return np.sum(y_test == y_pred) / len(y_test)
-#
-# acc = accuracy(y_test, predictions)
-# print(acc)
+def accuracy(y_true, y_pred):
+    return np.sum(y_test == y_pred) / len(y_test)
+
+acc = accuracy(y_test, predictions)
+print(acc)
